@@ -14,12 +14,16 @@ namespace Ex5
 
         private void btn_guess_Click(object sender, EventArgs e)
         {
-            if (tb_guess.Text == "")
+            int result;
+            try
+            {
+                result = Convert.ToInt32(tb_guess.Text);
+            }
+            catch
             {
                 MessageBox.Show(this, "请输入 [0,100] 的整数!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int result = Convert.ToInt32(tb_guess.Text);
             if (result < 0 || result > 100)
             {
                 MessageBox.Show(this, "请输入 [0,100] 的整数!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
