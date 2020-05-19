@@ -2,7 +2,7 @@
 {
     class ArraySort
     {
-        public void Sort(ref int[] vs)
+        public int[] Sort(int[] vs)
         {
             int n = vs.Length - 1;
             for (int i = 0; i < n; i++)
@@ -17,6 +17,7 @@
                     }
                 }
             }
+            return vs;
         }
     }
 }
