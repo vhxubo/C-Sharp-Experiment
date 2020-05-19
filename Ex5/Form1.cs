@@ -27,7 +27,7 @@ namespace Ex5
             }
             if (result == answer)
             {
-                MessageBox.Show(this, "恭喜你猜对了", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show(this, "恭喜你猜对了！\n游戏结束", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else if (result < answer)
             {
