@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
 编写一个随机数小游戏，实现如下功能：
@@ -18,6 +14,34 @@ namespace Ex1
     {
         static void Main(string[] args)
         {
+            Random random = new Random();
+            int question = random.Next(0, 101);
+            int answer = 0;
+            Console.WriteLine("亲爱的玩家，我已经生成了一个 [0,100] 的数字，Guess it！");
+            do
+            {
+                Console.Write("你的答案：");
+                answer = Convert.ToInt32(Console.ReadLine());
+            } while (!Guess(answer, question));
+        }
+
+        static bool Guess(int answer, int question)
+        {
+            if (answer == question)
+            {
+                Console.WriteLine("--- 恭喜你，答对了！---");
+                Console.ReadKey();
+                return true;
+            }
+            else if (answer < question)
+            {
+                Console.WriteLine("--- 猜小了 ---");
+            }
+            else
+            {
+                Console.WriteLine("--- 猜大了 ---");
+            }
+            return false;
         }
     }
 }
