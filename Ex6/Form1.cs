@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Ex6
@@ -17,7 +18,7 @@ namespace Ex6
         {
             try
             {
-                answer = Convert.ToInt32(System.IO.File.ReadAllText(PATH));
+                answer = Convert.ToInt32(File.ReadAllText(PATH));
             }
             catch
             {
@@ -25,7 +26,7 @@ namespace Ex6
             }
             lb_result.Text = "请输入一个[0,100]的整数";
             tb_guess.Text = "";
-            System.IO.File.WriteAllText(PATH, answer.ToString());
+            File.WriteAllText(PATH, answer.ToString());
         }
 
         private void btn_guess_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace Ex6
             if (answer == result)
             {
                 DialogResult dialogResult = MessageBox.Show(this, "恭喜你猜对了！\n再来一局？\n", "游戏结束", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-                System.IO.File.WriteAllText(PATH, "");
+                File.WriteAllText(PATH, "");
                 if (dialogResult == DialogResult.OK)
                 {
                     this.Init();
