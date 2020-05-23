@@ -13,11 +13,10 @@ namespace Ex7
             InitializeComponent();
         }
 
-        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mitem_open_Click(object sender, EventArgs e)
         {
             string fileContent;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -32,12 +31,12 @@ namespace Ex7
             }
         }
 
-        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mitem_new_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
         }
 
-        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mitem_save_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
             {
@@ -67,7 +66,7 @@ namespace Ex7
             }
         }
 
-        private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mitem_saveas_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             saveFileDialog1.RestoreDirectory = true;
