@@ -2,6 +2,7 @@
 {
     class ArraySort1 : ArraySort
     {
+        // 冒泡排序算法
         public override int[] Sort(int[] arrNum)
         {
             int[] vs = (int[])arrNum.Clone();
