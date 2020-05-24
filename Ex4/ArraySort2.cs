@@ -9,6 +9,7 @@
             return vs;
         }
 
+        // 快速排序算法
         private static void QuickSort(int[] arr, int left, int right)
         {
             int i, j, s;

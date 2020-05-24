@@ -14,10 +14,12 @@ namespace Ex4
         {
             int[] arrNum = Init();
 
+            // 调用第一个排序类
             ArraySort1 arrSort1 = new ArraySort1();
             int[] result1 = arrSort1.Sort(arrNum);
             Output("ArraySort1", result1);
 
+            // 调用第二个排序类
             ArraySort2 arrSort2 = new ArraySort2();
             int[] result2 = arrSort2.Sort(arrNum);
             Output("ArraySort2", result2);
@@ -25,6 +27,7 @@ namespace Ex4
             Console.ReadKey();
         }
 
+        // 初始化数组
         static int[] Init()
         {
             Console.WriteLine("请在下方输入需要排序的数组，格式为：1,2,6,3,5,4 \n请使用英文符号！");
@@ -38,6 +41,7 @@ namespace Ex4
             return arrNum;
         }
 
+        // 格式化输出数组
         static void Output(string name, int[] arrNum)
         {
             Console.Write(name + " output: ");
