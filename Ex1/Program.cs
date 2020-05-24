@@ -17,7 +17,7 @@ namespace Ex1
             Random random = new Random();
             int question = random.Next(0, 101);
             int answer = 0;
-            Console.WriteLine("亲爱的玩家，我已经生成了一个 [0,100] 的数字，Guess it！");
+            Console.WriteLine("亲爱的玩家，请在下方输入一个 [0,100] 的整数，Guess it！");
             do
             {
                 Console.Write("你的答案：");
@@ -25,6 +25,7 @@ namespace Ex1
             } while (!Guess(answer, question));
         }
 
+        // 判断用户输入与正确答案是否一致，输出结果
         static bool Guess(int answer, int question)
         {
             if (answer == question)
