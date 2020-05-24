@@ -16,36 +16,36 @@ namespace Ex6
 
         private void Init()
         {
-            try
+            if (!File.Exists(PATH))
+            {
+                FileStream fileStream = File.Create(PATH);
+                fileStream.Close();
+
+                answer = new Random().Next(0, 101);
+
+                using (StreamWriter sw = new StreamWriter(PATH))
+                {
+                    sw.Write(answer.ToString());
+                    sw.Flush();
+                    sw.Close();
+                }
+            }
+            else
             {
                 using (StreamReader sr = new StreamReader(PATH))
                 {
-                    answer = Convert.ToInt32(sr.Read());
+                    answer = Convert.ToInt32(sr.ReadLine());
                     sr.Close();
-                    if(answer == -1)
-                    {
-                        answer = new Random().Next(0, 101);
-                    }
                 }
-            }
-            catch
-            {
-                answer = new Random().Next(0, 101);
             }
 
             lb_result.Text = "请输入一个[0,100]的整数";
             tb_guess.Text = "";
-
-            using (StreamWriter sw = new StreamWriter(PATH))
-            {
-                sw.Write(answer.ToString());
-                sw.Close();
-            }
         }
 
         private void btn_guess_Click(object sender, EventArgs e)
         {
-            int result;
+            int result = 0;
             try
             {
                 result = Convert.ToInt32(tb_guess.Text);
@@ -66,11 +66,7 @@ namespace Ex6
             {
                 DialogResult dialogResult = MessageBox.Show(this, "恭喜你猜对了！\n再来一局？\n", "游戏结束", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
 
-                using (StreamWriter sw = new StreamWriter(PATH))
-                {
-                    sw.Write(string.Empty);
-                    sw.Close();
-                }
+                File.Delete(PATH);
 
                 if (dialogResult == DialogResult.OK)
                 {
