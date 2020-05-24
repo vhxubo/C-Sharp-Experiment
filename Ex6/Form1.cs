@@ -18,7 +18,16 @@ namespace Ex6
         {
             try
             {
-                answer = Convert.ToInt32(File.ReadAllText(PATH));
+                using (StreamReader sr = new StreamReader(PATH))
+                {
+                    answer = Convert.ToInt32(sr.Read());
+                    sr.Close();
+                    if(answer == -1)
+                    {
+                        answer = new Random().Next(0, 101);
+                    }
+                }
+                // answer = Convert.ToInt32(File.ReadAllText(PATH));
             }
             catch
             {
@@ -26,7 +35,12 @@ namespace Ex6
             }
             lb_result.Text = "请输入一个[0,100]的整数";
             tb_guess.Text = "";
-            File.WriteAllText(PATH, answer.ToString());
+            // File.WriteAllText(PATH, answer.ToString());
+            using (StreamWriter sw = new StreamWriter(PATH))
+            {
+                sw.Write(answer.ToString());
+                sw.Close();
+            }
         }
 
         private void btn_guess_Click(object sender, EventArgs e)
@@ -49,10 +63,15 @@ namespace Ex6
             if (answer == result)
             {
                 DialogResult dialogResult = MessageBox.Show(this, "恭喜你猜对了！\n再来一局？\n", "游戏结束", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-                File.WriteAllText(PATH, "");
+                // File.WriteAllText(PATH, "");
+                using (StreamWriter sw = new StreamWriter(PATH))
+                {
+                    sw.Write(string.Empty);
+                    sw.Close();
+                }
                 if (dialogResult == DialogResult.OK)
                 {
-                    this.Init();
+                    Init();
                 }
                 else if (dialogResult == DialogResult.Cancel)
                 {
